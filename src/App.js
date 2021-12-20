@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import TicTacToe from "./tic-tac-toe/TicTacToe";
+import TodoList from "./inputs/TodoList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+
+    const [openGame, setOpenGame] = useState('');
+
+    const openApp = (game) => {
+    setOpenGame(game);
+    }
+
+    return (
+        <div>
+            <button onClick={() => openApp('ticTacToe')}>Tic Tac Toe</button>
+            {openGame === 'ticTacToe' && <TicTacToe/>}
+
+            <button onClick={() => openApp('todoList')} >todoList</button>
+            {openGame === 'todoList' && <TodoList />}
+        </div>
+    );
+};
 
 export default App;
+
+
